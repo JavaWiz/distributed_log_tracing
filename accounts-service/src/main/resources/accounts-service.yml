@@ -1,0 +1,32 @@
+spring:
+   application:
+      name: accounts-service
+#   zipkin:
+#      enabled: false
+
+server.port: 2222
+
+logging:
+   level:
+      com:
+      javawiz: info
+
+info:
+   app:
+      name: accounts-service
+      description: This is my first spring boot application
+      version: 1.0.0
+
+# Discovery Server Access
+#  1. DEV ONLY: Reduce the lease renewal interval to speed up registration
+#  2. Define URL of registration server (defaultZone)
+eureka:
+   instance:
+      prefer-ip-address: true
+   client:
+      serviceUrl:
+         defaultZone: http://localhost:1111/eureka/
+
+# Enable actuator access without security checks - DEVELOPEMENT ONLY
+management.security.enabled: false
+management.endpoints.web.exposure.include: "*"
